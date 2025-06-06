@@ -26,16 +26,38 @@ int exponenciacao(int base, int expo){
 
 
 
-int charPraIntDeci(char vetor[]){
+int charPraIntDeci(int * be,char vetor[]){
     int contador = 0;
     int expoente= 0;
     int numeroDec = 0;
-    for(int i = 0; i < 10; i++){
-        if(vetor[i] != '\0'){
-            contador +=1;
-
-
+    int limitador = 0;
+    if((*be) == 1){
+        for(int i = 0; i < 10; i++){
+            if(vetor[i] != '\0'){
+                contador +=1;
+            }
         }
+    }else if((*be) == 2){
+        for(int i = 0; i < 7; i++){
+            if(vetor[i] != '\0'){
+                contador +=1;
+            }
+        }
+
+    }else if((*be) == 3){
+        for(int i = 0; i < 7; i++){
+            if(vetor[i] != '\0'){
+                contador +=1;
+            }
+        }
+
+    }else if((*be) == 5){
+        for(int i = 0; i < 7; i++){
+            if(vetor[i] != '\0'){
+                contador +=1;
+            }
+        }
+
     }
     int numeros[contador];
     for(int k =0; k< contador; k++){
@@ -121,7 +143,7 @@ char * conversorB(int * be, int * bs, char * valor){
             conversorH(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para binário
-        int numeroDe =charPraIntDeci(valor);
+        int numeroDe =charPraIntDeci(be ,valor);
         char * valorInterConvertidoB = (char *) malloc(50 * sizeof(char));
         char * valorSaiConvertidoB = (char *) malloc(50 * sizeof(char));
         int i = 0;
@@ -195,7 +217,7 @@ char * conversorO(int * be, int * bs, char * valor){
             conversorH(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para binário
-        int numeroDe =charPraIntDeci(valor);
+        int numeroDe =charPraIntDeci(be,valor);
         char * valorInterConvertidoO = (char *) malloc(50 * sizeof(char));
         char * valorSaiConvertidoO = (char *) malloc(50 * sizeof(char));
         int i = 0;
@@ -283,8 +305,7 @@ char * conversorH(int * be, int * bs, char * valor){
         	conversorO(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para hexadecimal
-        printf("passou aqui");
-        int numeroDe =charPraIntDeci(valor);
+        int numeroDe =charPraIntDeci(be, valor);
         char * valorInterConvertidoH = (char *) malloc(50 * sizeof(char));
         char * valorSaiConvertidoH = (char *) malloc(50 * sizeof(char));
         int i = 0;
