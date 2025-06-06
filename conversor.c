@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 char * conversorO(int * be, int * bs, char * valor);
+char * conversorH(int * be, int * bs, char * valor);
 
 void ImprimirSaida(char * lista){
     printf("O número convertido é: %s\n", &lista[0]);
@@ -116,8 +117,8 @@ char * conversorB(int * be, int * bs, char * valor){
         }else if((*bs) == 2){
             (*be) = 3;
         	conversorO(be,bs,valorSaiConvertidoD);
-        }else if((*bs) == 4){
-            //mandar o número em decimal para o conversor hexadecimal
+        }else if((*bs) == 4){ ;//mandar o número em decimal para o conversor hexadecimal
+            conversorH(be,bs,valorSaiConvertidoD)
         }
     }else if((*be) == 3){ //converte decimal para binário
         int numeroDe =charPraIntDeci(valor);
@@ -189,9 +190,9 @@ char * conversorO(int * be, int * bs, char * valor){
             ImprimirSaida(valorSaiConvertidoD);
         }else if((*bs) == 1){ //mandar o número em decimal para o conversor binário
         	(*be) = 3;
-        	conversorB(be,bs,valorSaiConvertidoD);
+        	conversorB(be,bs,valorSaiConvertidoD); //mandar o número em decimal para o conversor hexadecimal
         }else if((*bs) == 4){
-            //mandar o número em decimal para o conversor hexadecimal
+            conversorH(be,bs,valorSaiConvertidoD)
         }
     }else if((*be) == 3){ //converte decimal para binário
         int numeroDe =charPraIntDeci(valor);
@@ -207,6 +208,108 @@ char * conversorO(int * be, int * bs, char * valor){
                 int resto = numeroDe % 8;
                 valorInterConvertidoO[i] = resto + '0';
                 numeroDe = numeroDe/8;
+                i++;
+            }
+
+        }
+        i = 0;
+        for(int j = 49; j >=0; j--){
+
+            if(valorInterConvertidoO[j] != '\0'){
+                valorSaiConvertidoO[i] = valorInterConvertidoO[j];
+                i++;
+            }
+
+        }
+        ImprimirSaida(valorSaiConvertidoO);
+
+
+    }
+
+}
+
+
+
+char * conversorH(int * be, int * bs, char * valor){
+    char * valorSaiConvertidoD = (char *) malloc(50 * sizeof(char));
+    if((*be) == 4){ // converte hexadecimal para decimal
+        int contador = 0;
+        int expoente = 0;
+        int decimal = 0;
+        if ((*bs) == 4){
+            ImprimirSaida(valor);
+        }
+        for(int i = 0; i < 5; i++){
+            if(valor[i] != '\0'){
+                contador +=1;
+
+
+            }
+        }
+
+        int numeros[contador];
+        for(int k =0; k< contador; k++){
+            if(valor[k] == 'a' || valor[k] == 'A'){
+                numeros[k] = 10;
+            }else if(valor[k] == 'b' || valor[k] == 'B'){
+                numeros[k] = 11;
+            }else if(valor[k] == 'c' || valor[k] == 'C'){
+                numeros[k] = 12;
+            }else if(valor[k] == 'd' || valor[k] == 'D'){
+                numeros[k] = 13;
+            }else if(valor[k] == 'e' || valor[k] == 'E'){
+                numeros[k] = 14;
+            }else if(valor[k] == 'f' || valor[k] == 'F'){
+                numeros[k] = 15;
+            }else{
+                numeros[k] = valor[k] - '0';
+            }
+        }
+
+        for(int j = (contador-1); j >=0; j--){
+            int multiplicando = exponenciacao(16,expoente);
+            decimal = decimal + (numeros[j]*multiplicando);
+            expoente +=1;
+
+        }
+        valorSaiConvertidoD = intDeciPraChar(decimal);
+        if((*bs) == 3){
+            ImprimirSaida(valorSaiConvertidoD);
+        }else if((*bs) == 1){ //mandar o número em decimal para o conversor binário
+        	(*be) = 3;
+        	conversorB(be,bs,valorSaiConvertidoD);
+        }else if((*bs) == 2){
+            (*be) = 3;
+        	conversorO(be,bs,valorSaiConvertidoD);
+        }
+    }else if((*be) == 3){ //converte decimal para hexadecimal
+        int numeroDe =charPraIntDeci(valor);
+        char * valorInterConvertidoH = (char *) malloc(50 * sizeof(char));
+        char * valorSaiConvertidoH = (char *) malloc(50 * sizeof(char));
+        int i = 0;
+        while(numeroDe > 0){
+            if(numeroDe == 1){
+                valorInterConvertidoH[i] = numeroDe + '0';
+                numeroDe = numeroDe/16;
+                i++;
+            }else{
+                int resto = numeroDe % 16;
+                if(resto == 10){
+                    valorInterConvertidoH[i] = 'A';
+                }else if(resto == 11){
+                    valorInterConvertidoH[i] = 'B';
+                }else if(resto == 12){
+                    valorInterConvertidoH[i] = 'C';
+                }else if(resto == 13){
+                    valorInterConvertidoH[i] = 'D';
+                }else if(resto == 14){
+                    valorInterConvertidoH[i] = 'E';
+                }else if(resto == 15){
+                    valorInterConvertidoH[i] = 'F';
+                }else{
+                    valorInterConvertidoO[i] = resto + '0';
+                }
+                numeroDe = numeroDe/16;
                 i++;
             }
 
@@ -345,7 +448,32 @@ int main(){
         break;
 
     case 4:
+        int controleHe = 0;
+        char valorEntraH[5] = {};
+        printf("Se colocar um espaço vazio no meio do número, ");
+        printf("tudo depois dele será desconsiderado\n");
+        printf("digite abaixo o valor hexadecimal que deseja converter com até 5 caractéres: \n");
 
+        while(controleHe == 0){
+            scanf("%s", &valorEntraH);
+            for(int i =0; i <7; i++){
+                if(valorEntraH[i] == '0' || valorEntraH[i] == '1' || valorEntraH[i] == '\0'|| valorEntraH[i] == '2' || valorEntraH[i] == '3'|| valorEntraH[i] == '4'||
+                   valorEntraH[i] == '5'|| valorEntraH[i] == '6'|| valorEntraH[i] == '7' || valorEntraH[i] == '8' || valorEntraH[i] == '9'|| valorEntraH[i] == 'a'
+                   || valorEntraH[i] == 'A'|| valorEntraH[i] == 'b'|| valorEntraH[i] == 'B'|| valorEntraH[i] == 'c'|| valorEntraH[i] == 'C'|| valorEntraH[i] == 'd'
+                   || valorEntraH[i] == 'D'|| valorEntraH[i] == 'e'|| valorEntraH[i] == 'E'|| valorEntraH[i] == 'f'|| valorEntraH[i] == 'F'){
+                    controleHe = 1;
+                }else{
+                    controleHe = 0;
+                    break;
+                }
+
+            }
+
+            if(controleHe == 0){
+                printf("Digite um número hexadecimal com até 5 caractéres ");
+            }
+        }
+    	conversorH(pbe,pbs,valorEntraH);
         break;
     default:
         printf("digite uma das opções válidas: \n");
