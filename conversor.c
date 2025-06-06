@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char * conversorO(int * be, int * bs, char * valor);
 
 void ImprimirSaida(char * lista){
     printf("O número convertido é: %s\n", &lista[0]);
@@ -83,6 +84,7 @@ char * intDeciPraChar(int numero){
 char * conversorB(int * be, int * bs, char * valor){
     char * valorSaiConvertidoD = (char *) malloc(50 * sizeof(char));
     if((*be) == 1){ // converte binário para decimal
+
         int contador = 0;
         int expoente = 0;
         int decimal = 0;
@@ -108,11 +110,12 @@ char * conversorB(int * be, int * bs, char * valor){
             expoente +=1;
 
         }
+        valorSaiConvertidoD = intDeciPraChar(decimal);
         if((*bs) == 3){
-            valorSaiConvertidoD = intDeciPraChar(decimal);
             ImprimirSaida(valorSaiConvertidoD);
         }else if((*bs) == 2){
-            //mandar o número em decimal para o conversor octal
+            (*be) = 3;
+        	conversorO(be,bs,valorSaiConvertidoD);
         }else if((*bs) == 4){
             //mandar o número em decimal para o conversor hexadecimal
         }
@@ -151,6 +154,78 @@ char * conversorB(int * be, int * bs, char * valor){
 }
 
 
+
+
+char * conversorO(int * be, int * bs, char * valor){
+    char * valorSaiConvertidoD = (char *) malloc(50 * sizeof(char));
+    if((*be) == 2){ // converte octal para decimal
+        int contador = 0;
+        int expoente = 0;
+        int decimal = 0;
+        if ((*bs) == 2){
+            ImprimirSaida(valor);
+        }
+        for(int i = 0; i < 7; i++){
+            if(valor[i] != '\0'){
+                contador +=1;
+
+
+            }
+        }
+
+        int numeros[contador];
+        for(int k =0; k< contador; k++){
+            numeros[k] = valor[k] - '0';
+        }
+
+        for(int j = (contador-1); j >=0; j--){
+            int multiplicando = exponenciacao(8,expoente);
+            decimal = decimal + (numeros[j]*multiplicando);
+            expoente +=1;
+
+        }
+        valorSaiConvertidoD = intDeciPraChar(decimal);
+        if((*bs) == 3){
+            ImprimirSaida(valorSaiConvertidoD);
+        }else if((*bs) == 1){ //mandar o número em decimal para o conversor binário
+        	(*be) = 3;
+        	conversorB(be,bs,valorSaiConvertidoD);
+        }else if((*bs) == 4){
+            //mandar o número em decimal para o conversor hexadecimal
+        }
+    }else if((*be) == 3){ //converte decimal para binário
+        int numeroDe =charPraIntDeci(valor);
+        char * valorInterConvertidoO = (char *) malloc(50 * sizeof(char));
+        char * valorSaiConvertidoO = (char *) malloc(50 * sizeof(char));
+        int i = 0;
+        while(numeroDe > 0){
+            if(numeroDe == 1){
+                valorInterConvertidoO[i] = numeroDe + '0';
+                numeroDe = numeroDe/8;
+                i++;
+            }else{
+                int resto = numeroDe % 8;
+                valorInterConvertidoO[i] = resto + '0';
+                numeroDe = numeroDe/8;
+                i++;
+            }
+
+        }
+        i = 0;
+        for(int j = 49; j >=0; j--){
+
+            if(valorInterConvertidoO[j] != '\0'){
+                valorSaiConvertidoO[i] = valorInterConvertidoO[j];
+                i++;
+            }
+
+        }
+        ImprimirSaida(valorSaiConvertidoO);
+
+
+    }
+
+}
 
 
 int main(){
@@ -207,7 +282,31 @@ int main(){
         }
         conversorB(pbe,pbs,valorEntraB);
         break;
+
     case 2:
+    	int controleOc = 0;
+        char valorEntraO[7] = {};
+        printf("Se colocar um espaço vazio no meio do número, ");
+        printf("tudo depois dele será desconsiderado\n");
+        printf("digite abaixo o valor octal que deseja converter com até 7 caractéres: \n");
+
+        while(controleOc == 0){
+            scanf("%s", &valorEntraO);
+            for(int i =0; i <7; i++){
+                if(valorEntraO[i] == '0' || valorEntraO[i] == '1' || valorEntraO[i] == '\0'|| valorEntraO[i] == '2' || valorEntraO[i] == '3'|| valorEntraO[i] == '4'|| valorEntraO[i] == '5'|| valorEntraO[i] == '6'|| valorEntraO[i] == '7'){
+                    controleOc = 1;
+                }else{
+                    controleOc = 0;
+                    break;
+                }
+
+            }
+
+            if(controleOc == 0){
+                printf("Digite um número octal com até 7 caractéres ");
+            }
+        }
+    	conversorO(pbe,pbs,valorEntraO);
 
         break;
 
@@ -238,7 +337,7 @@ int main(){
             conversorB(pbe,pbs,valorEntraD);
         }
         if(bs == 2){
-
+            conversorO(pbe,pbs,valorEntraD);
         }
         if(bs == 4){
 
