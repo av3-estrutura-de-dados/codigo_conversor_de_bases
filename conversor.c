@@ -118,7 +118,7 @@ char * conversorB(int * be, int * bs, char * valor){
             (*be) = 3;
         	conversorO(be,bs,valorSaiConvertidoD);
         }else if((*bs) == 4){ ;//mandar o número em decimal para o conversor hexadecimal
-            conversorH(be,bs,valorSaiConvertidoD)
+            conversorH(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para binário
         int numeroDe =charPraIntDeci(valor);
@@ -192,7 +192,7 @@ char * conversorO(int * be, int * bs, char * valor){
         	(*be) = 3;
         	conversorB(be,bs,valorSaiConvertidoD); //mandar o número em decimal para o conversor hexadecimal
         }else if((*bs) == 4){
-            conversorH(be,bs,valorSaiConvertidoD)
+            conversorH(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para binário
         int numeroDe =charPraIntDeci(valor);
@@ -283,6 +283,7 @@ char * conversorH(int * be, int * bs, char * valor){
         	conversorO(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para hexadecimal
+        printf("passou aqui");
         int numeroDe =charPraIntDeci(valor);
         char * valorInterConvertidoH = (char *) malloc(50 * sizeof(char));
         char * valorSaiConvertidoH = (char *) malloc(50 * sizeof(char));
@@ -307,7 +308,7 @@ char * conversorH(int * be, int * bs, char * valor){
                 }else if(resto == 15){
                     valorInterConvertidoH[i] = 'F';
                 }else{
-                    valorInterConvertidoO[i] = resto + '0';
+                    valorInterConvertidoH[i] = resto + '0';
                 }
                 numeroDe = numeroDe/16;
                 i++;
@@ -317,13 +318,13 @@ char * conversorH(int * be, int * bs, char * valor){
         i = 0;
         for(int j = 49; j >=0; j--){
 
-            if(valorInterConvertidoO[j] != '\0'){
-                valorSaiConvertidoO[i] = valorInterConvertidoO[j];
+            if(valorInterConvertidoH[j] != '\0'){
+                valorSaiConvertidoH[i] = valorInterConvertidoH[j];
                 i++;
             }
 
         }
-        ImprimirSaida(valorSaiConvertidoO);
+        ImprimirSaida(valorSaiConvertidoH);
 
 
     }
@@ -443,7 +444,7 @@ int main(){
             conversorO(pbe,pbs,valorEntraD);
         }
         if(bs == 4){
-
+            conversorH(pbe,pbs,valorEntraD);
         }
         break;
 
@@ -456,7 +457,7 @@ int main(){
 
         while(controleHe == 0){
             scanf("%s", &valorEntraH);
-            for(int i =0; i <7; i++){
+            for(int i =0; i <5; i++){
                 if(valorEntraH[i] == '0' || valorEntraH[i] == '1' || valorEntraH[i] == '\0'|| valorEntraH[i] == '2' || valorEntraH[i] == '3'|| valorEntraH[i] == '4'||
                    valorEntraH[i] == '5'|| valorEntraH[i] == '6'|| valorEntraH[i] == '7' || valorEntraH[i] == '8' || valorEntraH[i] == '9'|| valorEntraH[i] == 'a'
                    || valorEntraH[i] == 'A'|| valorEntraH[i] == 'b'|| valorEntraH[i] == 'B'|| valorEntraH[i] == 'c'|| valorEntraH[i] == 'C'|| valorEntraH[i] == 'd'
