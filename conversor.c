@@ -140,6 +140,7 @@ char * conversorB(int * be, int * bs, char * valor){
             (*be) = 3;
         	conversorO(be,bs,valorSaiConvertidoD);
         }else if((*bs) == 4){ ;//mandar o número em decimal para o conversor hexadecimal
+            (*be) = 3;
             conversorH(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para binário
@@ -214,6 +215,7 @@ char * conversorO(int * be, int * bs, char * valor){
         	(*be) = 3;
         	conversorB(be,bs,valorSaiConvertidoD); //mandar o número em decimal para o conversor hexadecimal
         }else if((*bs) == 4){
+            (*be) = 3;
             conversorH(be,bs,valorSaiConvertidoD);
         }
     }else if((*be) == 3){ //converte decimal para binário
