@@ -1,38 +1,54 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h> //inclusão da biblioteca de entrada e saída
+#include <stdlib.h> //inclusão da biblioteca de controle de alocação de memória
 
-char * conversorO(int * be, int * bs, char * valor);
-char * conversorH(int * be, int * bs, char * valor);
+char * conversorO(int * be, int * bs, char * valor); /*declaração da chamada da função de conversão de base octal 
+com 2 ponteiros do tipo inteiro, chamados be e bs para receber as bases e um ponteiro do tipo char chamado 
+valor para receber o número que será convertido*/
 
-void ImprimirSaida(char * lista){
-    printf("O número convertido é: %s\n", &lista[0]);
+char * conversorH(int * be, int * bs, char * valor); /*declaração da chamada da função de conversão de base hexadecimal 
+com 2 ponteiros do tipo inteiro, chamados be e bs para receber as bases e um ponteiro do tipo char chamado 
+valor para receber o número que será convertido*/
+
+void ImprimirSaida(char * lista){ /*declaração da função para imprimir saída com um parâmetro 
+    do tipo char para receber o número a ser impreso*/
+    printf("O número convertido é: %s\n", &lista[0]); //impressão da saída com o string do número convertido 
 }
 
 
-int exponenciacao(int base, int expo){
-    int valor = base;
-    if(expo == 0){
-        valor = 1;
-    }else if(expo == 1){
-        valor = base;
-    }else{
-        for(int i =1; i<expo; i++){
-            valor = valor * base;
+int exponenciacao(int base, int expo){ /*declaração da função do tipo inteiro chamada exponenciação 
+    para realizar tal operação tendo como parâmetrosdois valores interios com nome base e expo, 
+    sendo o último o futuro expoente da operação*/
+    
+    int valor = base; //declaração de variável inteira para receber o valor de base
+
+    if(expo == 0){ //condicional para caso o expoente da operação seja 0
+        valor = 1; //o valor resultante da operação nesse caso será 1
+    
+    }else if(expo == 1){//condicional caso o expoente seja 1
+        valor = base; //neste caso o valor resultante é ele mesmo, ou a base
+    
+    }else{ //caso não seja nenhuma das condições acima
+        for(int i =1; i<expo; i++){ /*declaração de um laço para realização da multiplicação do 
+            valor por ele mesmo de forma consecutiva, tendo como limite o valor do expoente*/
+            
+            valor = valor * base; // o valor é ele multiplicado pela base original
         }
     }
-    return valor;
+    return valor; //retorna o valor após exponenciação
 
 }
 
 
 
-int charPraIntDeci(int * be,char vetor[]){
-    int contador = 0;
-    int expoente= 0;
-    int numeroDec = 0;
-    int limitador = 0;
-    if((*be) == 1){
-        for(int i = 0; i < 10; i++){
+int charPraIntDeci(int * be,char vetor[]){ /*declaração de função do tipo inteiro chamado charPraIntDeci, 
+    com finalidade de transformar uma valor decimal escrito em char, em inteiro. Os parâmetros dessa função são:
+    o um ponteiro be que é a base de entrada do tipo inteiro e um vetor do tipo char, chamado vetor*/
+    int contador = 0; //declaração de variável contador do tipo inteiro inicializado com valor 0
+    int expoente= 0; //declaração de variável expoente do tipo inteiro inicializada com valor 0
+    int numeroDec = 0; //declaração de variável numeroDec do tipo inteiro inicializado com valor 0
+    int limitador = 0; //declaração de variável limitador do tipo inteiro inicializado com valor 0
+    if((*be) == 1){ //condicional para verificar se a base de entrada é igual a 1 (opção para binário)
+        for(int i = 0; i < 10; i++){ //cria laço com limitador com mesmo tamanho do limitador do entrada do valor binpario original
             if(vetor[i] != '\0'){
                 contador +=1;
             }
