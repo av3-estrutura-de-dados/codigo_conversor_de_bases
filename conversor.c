@@ -356,7 +356,8 @@ char * conversorH(int * be, int * bs, char * valor){
 
 
 int main(){
-
+    int controleBaseEntra = 0;
+    int controleBaseSai = 0;
     int be; //base de entrada
     int bs; //base de saída
     int * pbe;
@@ -373,6 +374,21 @@ int main(){
 
     scanf("%d",&be); //escaneia a opção desejada
 
+    while(controleBaseEntra == 0){
+        if(be == 1 || be == 2 || be == 3 || be == 4){
+            controleBaseEntra = 1;
+        }else{
+            printf("digite uma das opções válidas: \n");
+            printf("1 - para binária\n"); //digite 1 para entrar números binários
+            printf("2 - para octal\n"); //digite 2 para entrar números octais
+            printf("3 - para decimal\n"); //digite 3 para entrar números decimais
+            printf("4 - para hexadecimal\n"); ////digite 4 para entrar números hexadecimais'
+            scanf("%d", &be);
+
+        }     
+
+    }
+
     printf("digite para qual base a seja deve ser convertida: \n"); // opções da base de saída
     printf("1 - para binária\n"); //digite 1 para sair números binários
     printf("2 - para octal\n"); //digite 2 para sair números octais
@@ -380,6 +396,21 @@ int main(){
     printf("4 - para hexadecimal\n"); //digite 4 para sair números hexadecimais
 
     scanf("%d",&bs); //escaneia a opção desejada
+
+    while(controleBaseSai == 0){
+        if(bs == 1 || bs == 2 || bs == 3 || bs == 4){
+            controleBaseSai = 1;
+        }else{
+            printf("digite uma das opções válidas: \n");
+            printf("1 - para binária\n"); //digite 1 para entrar números binários
+            printf("2 - para octal\n"); //digite 2 para entrar números octais
+            printf("3 - para decimal\n"); //digite 3 para entrar números decimais
+            printf("4 - para hexadecimal\n"); ////digite 4 para entrar números hexadecimais'
+            scanf("%d", &bs);
+
+        }     
+
+    }    
 
     switch (be)
     {
@@ -466,6 +497,9 @@ int main(){
         if(bs == 2){
             conversorO(pbe,pbs,valorEntraD);
         }
+        if(bs == 3){
+            ImprimirSaida(valorEntraD);
+        }
         if(bs == 4){
             conversorH(pbe,pbs,valorEntraD);
         }
@@ -500,12 +534,7 @@ int main(){
     	conversorH(pbe,pbs,valorEntraH);
         break;
     default:
-        printf("digite uma das opções válidas: \n");
-        printf("1 - para binária\n"); //digite 1 para entrar números binários
-        printf("2 - para octal\n"); //digite 2 para entrar números octais
-        printf("3 - para decimal\n"); //digite 3 para entrar números decimais
-        printf("4 - para hexadecimal\n"); ////digite 4 para entrar números hexadecimais'
-
+        
     }
     return 0;
 
