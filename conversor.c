@@ -460,128 +460,144 @@ int main(){ //inicialização do método main de tipo inteiro
     }    
 
     switch (be){ //condicional switch case com base no valor da variavel be
-    case 1:
-        int controleBi = 0; //variavel booleana para controle do número binário
-        char valorEntraB[10] = {}; // variavel par1a armazenar a entrada em binário
-        printf("Se colocar um espaço vazio no meio do número, ");
-        printf("tudo depois dele será desconsiderado\n");
-        printf("digite abaixo o valor binário que deseja converter com até 10 caractéres: \n");
+    case 1: //caso o valor de be seja 1 
+        int controleBi = 0; //variavel inteira controleBi para controle do número binário
+        char valorEntraB[10] = {}; // vetor do tipo char para armazenar a entrada do número binario
+        printf("Se colocar um espaço vazio no meio do número, "); // imprissão para ensinar as condições de entrada
+        printf("tudo depois dele será desconsiderado\n"); // imprissão para ensinar as condições de entrada
+        printf("digite abaixo o valor binário que deseja converter com até 10 caractéres: \n"); // imprissão para ensinar as condições de entrada
 
-        while(controleBi == 0){
-            scanf("%s", &valorEntraB);
-            for(int i =0; i <10; i++){
-                if(valorEntraB[i] == '1' || valorEntraB[i] == '0' || valorEntraB[i] == '\0'){
-                    controleBi = 1;
+        while(controleBi == 0){ //declaração de laço de repetição baseada no valor do número de controleBi
+            scanf("%s", &valorEntraB); //escaneia a escrita da string do usuário e atrela à variável valorEntraB
+            for(int i =0; i <10; i++){ //laço com tamanho do vetor valorEntraB para realizar sua leitura
+                if(valorEntraB[i] == '1' || valorEntraB[i] == '0' || valorEntraB[i] == '\0'){ /*condicional para verificar se os itens no vetor são 1,
+                     0 ou valor vazio segundo o ASCII*/
+                    controleBi = 1; // caso seja atendido as condições muda a variável controleBi para 1 e encerra o laço
 
                 }else{
-                    controleBi = 0;
-                    break;
+                    controleBi = 0; //caso qualquer dos itens presentes no vetor não seja atendido controleBi continua 0 
+                    break; //quebra o laço do for
                 }
 
             }
 
-            if(controleBi == 0){
+            if(controleBi == 0){ //se o controleBi ainda for 0 ele imprime solicitando que o usuário preencha novamente o vetor
                 printf("Digite um número binário com até 10 caractéres ");
             }
         }
-        conversorB(pbe,pbs,valorEntraB);
-        break;
+        conversorB(pbe,pbs,valorEntraB); /*depois de preenchido o vetor com um número binário, ele é enviado para a função de conversorB, 
+        junto com os ponteiros pbe e pbs*/
+        break; //interrompe o switch case
 
-    case 2:
-    	int controleOc = 0;
-        char valorEntraO[7] = {};
-        printf("Se colocar um espaço vazio no meio do número, ");
-        printf("tudo depois dele será desconsiderado\n");
-        printf("digite abaixo o valor octal que deseja converter com até 7 caractéres: \n");
+    case 2: //caso o valor de be seja 2
+    	int controleOc = 0; //variavel inteira controleOc para controle do número octal
+        char valorEntraO[7] = {}; // vetor do tipo char para armazenar a entrada do número octal
+        printf("Se colocar um espaço vazio no meio do número, "); // imprissão para ensinar as condições de entrada
+        printf("tudo depois dele será desconsiderado\n"); // imprissão para ensinar as condições de entrada
+        printf("digite abaixo o valor octal que deseja converter com até 7 caractéres: \n"); // imprissão para ensinar as condições de entrada
 
-        while(controleOc == 0){
-            scanf("%s", &valorEntraO);
-            for(int i =0; i <7; i++){
-                if(valorEntraO[i] == '0' || valorEntraO[i] == '1' || valorEntraO[i] == '\0'|| valorEntraO[i] == '2' || valorEntraO[i] == '3'|| valorEntraO[i] == '4'|| valorEntraO[i] == '5'|| valorEntraO[i] == '6'|| valorEntraO[i] == '7'){
-                    controleOc = 1;
+        while(controleOc == 0){  //declaração de laço de repetição baseada no valor do número de controleOc
+            scanf("%s", &valorEntraO); //escaneia a escrita da string do usuário e atrela à variável valorEntraO
+            for(int i =0; i <7; i++){ //laço com tamanho do vetor valorEntraO para realizar sua leitura
+                if(valorEntraO[i] == '0' || valorEntraO[i] == '1' || valorEntraO[i] == '\0'|| 
+                    valorEntraO[i] == '2' || valorEntraO[i] == '3'|| valorEntraO[i] == '4'|| 
+                    valorEntraO[i] == '5'|| valorEntraO[i] == '6'|| valorEntraO[i] == '7'){ /*condicional para verificar se os itens no vetor são 0,
+                     1, 2, 3, 4, 5, 6, 7 ou valor vazio segundo o ASCII*/
+
+                    controleOc = 1; // caso seja atendido as condições muda a variável controleOc para 1 e encerra o laço
                 }else{
-                    controleOc = 0;
-                    break;
+                    controleOc = 0; //caso qualquer dos itens presentes no vetor não seja atendido controleOc continua 0 
+                    break; //quebra o laço do for
                 }
 
             }
 
-            if(controleOc == 0){
-                printf("Digite um número octal com até 7 caractéres ");
+            if(controleOc == 0){ //se o controleOc ainda for 0 ele imprime solicitando que o usuário preencha novamente o vetor
+                printf("Digite um número octal com até 7 caractéres "); 
             }
         }
-    	conversorO(pbe,pbs,valorEntraO);
+    	conversorO(pbe,pbs,valorEntraO);/*depois de preenchido o vetor com um número octal, ele é enviado para a função de conversorO, 
+        junto com os ponteiros pbe e pbs*/
 
-        break;
+        break; //interrompe o switch case
 
-    case 3:
-        int controleDec = 0;
-        char valorEntraD[7] = {};
-        printf("Se colocar um espaço vazio no meio do número, ");
-        printf("tudo depois dele será desconsiderado\n");
-        printf("digite abaixo o valor decimal que deseja converter com até 7 caractéres: \n");
+    case 3: //caso o valor de be seja 3
+        int controleDec = 0; //variavel inteira controleDec para controle do número decimal
+        char valorEntraD[7] = {}; // vetor do tipo char para armazenar a entrada do número decimal
+        printf("Se colocar um espaço vazio no meio do número, "); // imprissão para ensinar as condições de entrada
+        printf("tudo depois dele será desconsiderado\n"); // imprissão para ensinar as condições de entrada
+        printf("digite abaixo o valor decimal que deseja converter com até 7 caractéres: \n"); // imprissão para ensinar as condições de entrada
 
-        while(controleDec == 0){
-            scanf("%s", &valorEntraD);
-            for(int i =0; i <7; i++){
-                if(valorEntraD[i] == '0' || valorEntraD[i] == '1' || valorEntraD[i] == '\0'|| valorEntraD[i] == '2' || valorEntraD[i] == '3'|| valorEntraD[i] == '4'|| valorEntraD[i] == '5'|| valorEntraD[i] == '6'|| valorEntraD[i] == '7'|| valorEntraD[i] == '8'|| valorEntraD[i] == '9'){
-                    controleDec = 1;
+        while(controleDec == 0){ //declaração de laço de repetição baseada no valor do número de controleDec
+            scanf("%s", &valorEntraD); //escaneia a escrita da string do usuário e atrela à variável valorEntraD
+            for(int i =0; i <7; i++){ //laço com tamanho do vetor valorEntraD para realizar sua leitura
+                if(valorEntraD[i] == '0' || valorEntraD[i] == '1' || valorEntraD[i] == '\0'|| valorEntraD[i] == '2' ||
+                     valorEntraD[i] == '3'|| valorEntraD[i] == '4'|| valorEntraD[i] == '5'|| valorEntraD[i] == '6'||
+                      valorEntraD[i] == '7'|| valorEntraD[i] == '8'|| valorEntraD[i] == '9'){ /*condicional para verificar se os itens no vetor são 0,
+                     1, 2, 3, 4, 5, 6, 7, 8, 9 ou valor vazio segundo o ASCII*/
+                    controleDec = 1; //caso seja atendido as condições muda a variável controleDec para 1 e encerra o laço
                 }else{
-                    controleDec = 0;
-                    break;
+                    controleDec = 0; //caso qualquer dos itens presentes no vetor não seja atendido controleDec continua 0 
+                    break; //quebra o laço do for
                 }
 
             }
 
-            if(controleDec == 0){
+            if(controleDec == 0){ //se o controleDec ainda for 0 ele imprime solicitando que o usuário preencha novamente o vetor
                 printf("Digite um número decimal com até 7 caractéres ");
             }
         }
-        if(bs ==1){
-            conversorB(pbe,pbs,valorEntraD);
+        if(bs ==1){ //condicional para verificar se a base de saida é 1 (binário)
+            conversorB(pbe,pbs,valorEntraD); /*depois de preenchido o vetor com um número decimal, ele é enviado para a função de conversorB, 
+        junto com os ponteiros pbe e pbs*/
         }
-        if(bs == 2){
-            conversorO(pbe,pbs,valorEntraD);
+        if(bs == 2){ //condicional para verificar se a base de saida é 2 (octal)
+            conversorO(pbe,pbs,valorEntraD); /*depois de preenchido o vetor com um número decimal, ele é enviado para a função de conversorO, 
+        junto com os ponteiros pbe e pbs*/
         }
-        if(bs == 3){
-            ImprimirSaida(valorEntraD);
+        if(bs == 3){ //condicional para verificar se a base de saida é 3 (decimal)
+            ImprimirSaida(valorEntraD); //chama a função ImprimirSaida para imprimir o número decimal
         }
-        if(bs == 4){
-            conversorH(pbe,pbs,valorEntraD);
+        if(bs == 4){ //condicional para verificar se a base de saida é 4 (hexadecimal)
+            conversorH(pbe,pbs,valorEntraD); /*depois de preenchido o vetor com um número hexadecimal, ele é enviado para a função de conversorH, 
+        junto com os ponteiros pbe e pbs*/
         }
-        break;
+        break; //interrompe o switch case
 
-    case 4:
-        int controleHe = 0;
-        char valorEntraH[5] = {};
-        printf("Se colocar um espaço vazio no meio do número, ");
-        printf("tudo depois dele será desconsiderado\n");
-        printf("digite abaixo o valor hexadecimal que deseja converter com até 5 caractéres: \n");
+    case 4: //caso o valor de be seja 4
+        int controleHe = 0; //variavel inteira controleHe para controle do número hexadecimal
+        char valorEntraH[5] = {}; // vetor do tipo char para armazenar a entrada do número hexadecimal
+        printf("Se colocar um espaço vazio no meio do número, "); // imprissão para ensinar as condições de entrada
+        printf("tudo depois dele será desconsiderado\n"); // imprissão para ensinar as condições de entrada
+        printf("digite abaixo o valor hexadecimal que deseja converter com até 5 caractéres: \n"); // imprissão para ensinar as condições de entrada
 
-        while(controleHe == 0){
-            scanf("%s", &valorEntraH);
-            for(int i =0; i <5; i++){
+        while(controleHe == 0){ //declaração de laço de repetição baseada no valor do número de controleHe
+            scanf("%s", &valorEntraH); //escaneia a escrita da string do usuário e atrela à variável valorEntraH
+            for(int i =0; i <5; i++){ //laço com tamanho do vetor valorEntraH para realizar sua leitura
                 if(valorEntraH[i] == '0' || valorEntraH[i] == '1' || valorEntraH[i] == '\0'|| valorEntraH[i] == '2' || valorEntraH[i] == '3'|| valorEntraH[i] == '4'||
                    valorEntraH[i] == '5'|| valorEntraH[i] == '6'|| valorEntraH[i] == '7' || valorEntraH[i] == '8' || valorEntraH[i] == '9'|| valorEntraH[i] == 'a'
                    || valorEntraH[i] == 'A'|| valorEntraH[i] == 'b'|| valorEntraH[i] == 'B'|| valorEntraH[i] == 'c'|| valorEntraH[i] == 'C'|| valorEntraH[i] == 'd'
-                   || valorEntraH[i] == 'D'|| valorEntraH[i] == 'e'|| valorEntraH[i] == 'E'|| valorEntraH[i] == 'f'|| valorEntraH[i] == 'F'){
-                    controleHe = 1;
+                   || valorEntraH[i] == 'D'|| valorEntraH[i] == 'e'|| valorEntraH[i] == 'E'|| 
+                   valorEntraH[i] == 'f'|| valorEntraH[i] == 'F'){ /*condicional para verificar se os itens no vetor são 0,
+                     1, 2, 3, 4, 5, 6, 7, 8, 9, a, A, b, B, c, C, d, D, e, E, f, F ou valor vazio segundo o ASCII*/
+                    controleHe = 1; // caso seja atendido as condições muda a variável controleHe para 1 e encerra o laço
                 }else{
-                    controleHe = 0;
-                    break;
+                    controleHe = 0; //caso qualquer dos itens presentes no vetor não seja atendido controleOc continua 0 
+                    break; //quebra o laço do for
                 }
 
             }
 
-            if(controleHe == 0){
+            if(controleHe == 0){ //se o controleHe ainda for 0 ele imprime solicitando que o usuário preencha novamente o vetor
                 printf("Digite um número hexadecimal com até 5 caractéres ");
             }
         }
-    	conversorH(pbe,pbs,valorEntraH);
-        break;
-    default:
+    	conversorH(pbe,pbs,valorEntraH); /*depois de preenchido o vetor com um número hexadecimal, ele é enviado para a função de conversorH, 
+        junto com os ponteiros pbe e pbs*/
+        break; //interrompe o switch case
+    default: // são tem caso default neste switch case, pois o dado a variável a ser analisada já é filtrada anteriormente
         
     }
-    return 0;
+    return 0; // retorna 0 caso a função main consiga executar sem erros
 
 }
