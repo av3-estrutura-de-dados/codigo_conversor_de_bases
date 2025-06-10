@@ -406,8 +406,8 @@ char * conversorH(int * be, int * bs, char * valor){ /*declaração de função 
 int main(){ //inicialização do método main de tipo inteiro
     int controleBaseEntra = 0; //declaração de variável do tipo inteiro chamada controleBaseEntra inicializado com 0
     int controleBaseSai = 0; //declaração de variável do tipo inteiro chamada controleBaseSai inicializado com 0
-    char beIni[1] = {};
-    char bsIni[1] = {};
+    char beIni[1] = {}; //criação do vetor do tipo char para ler inicialmente a base de entrada chamado beIni
+    char bsIni[1] = {}; //criação do vetor do tipo char para ler inicialmente a base de entrada bsIni
     int be; //delcaração de variável do tipo inteiro chamada be que representa a base de entrada
     int bs; //delcaração de variável do tipo inteiro chamada be que representa a base de saída
     int * pbe; //declaração de ponteiro do tipo inteiro chamado pbe que é o ponteiro da base de entrada
@@ -421,11 +421,11 @@ int main(){ //inicialização do método main de tipo inteiro
     printf("3 - para decimal\n"); //imprime digite 3 para entrar números decimais
     printf("4 - para hexadecimal\n"); //imprime digite 4 para entrar números hexadecimais
 
-    scanf("%s",&beIni[0]); //escaneia a opção desejada para base de entrada do tipo inteiro
+    scanf("%s",&beIni[0]); //escaneia a opção desejada para base de entrada do tipo string
 
     while(controleBaseEntra == 0){ //declaração de laço de repetição baseada no valor do número de controleBaseEntra
         if(beIni[0] == '1' || beIni[0] == '2' || beIni[0] == '3' || beIni[0] == '4'){ //condicional para verificar se a base de entrada é 1, 2, 3 ou 4
-            be = beIni[0] - '0';
+            be = beIni[0] - '0'; //caso seja uma das opções desejadas a variável be recebe o valor transformado em tipo inteiro
             controleBaseEntra = 1;//caso seja uma das opções desejadas a variavel controleBaseEntra muda para 1 e encerra o laço
         }else{ //caso a condicional não seja atendida é repetido a impressão das opções de entrada e espera a nova resposta do usuário
             printf("digite uma das opções válidas: \n"); //imprime a solicitação por uma nova entrada até que atenda as condições
@@ -433,7 +433,7 @@ int main(){ //inicialização do método main de tipo inteiro
             printf("2 - para octal\n"); //imprime digite 2 para entrar números octais
             printf("3 - para decimal\n"); //imprime digite 3 para entrar números decimais
             printf("4 - para hexadecimal\n"); //imprime digite 4 para entrar números hexadecimais'
-            scanf("%s", &beIni[0]); //escaneia a opção desejada para base de entrada do tipo char
+            scanf("%s", &beIni[0]); //escaneia a opção desejada para base de entrada do tipo string
 
         }     
 
@@ -445,11 +445,11 @@ int main(){ //inicialização do método main de tipo inteiro
     printf("3 - para decimal\n"); //imprime digite 3 para sair números decimais
     printf("4 - para hexadecimal\n"); //imprime digite 4 para sair números hexadecimais
 
-    scanf("%s",&bsIni[0]); //escaneia a opção desejada para base de saida do tipo inteiro
+    scanf("%s",&bsIni[0]); //escaneia a opção desejada para base de saida do tipo string
 
     while(controleBaseSai == 0){ //declaração de laço de repetição baseada no valor do número de controleBaseSai
         if(bsIni[0] == '1' || bsIni[0] == '2' || bsIni[0] == '3' || bsIni[0] == '4'){ //condicional para verificar se a base de saida é 1, 2, 3 ou 4
-            bs = bsIni[0] - '0';
+            bs = bsIni[0] - '0'; //caso seja uma das opções desejadas a variável be recebe o valor transformado em tipo inteiro
             controleBaseSai = 1; //caso seja uma das opções desejadas a variavel controleBaseSai muda para 1 e encerra o laço
         }else{ //caso a condicional não seja atendida é repetido a impressão das opções de saida e espera a nova resposta do usuário
             printf("digite uma das opções válidas: \n"); //imprime a solicitação por uma nova entrada até que atenda as condições
@@ -457,7 +457,7 @@ int main(){ //inicialização do método main de tipo inteiro
             printf("2 - para octal\n"); //imprime digite 2 para entrar números octais
             printf("3 - para decimal\n"); //imprime digite 3 para entrar números decimais
             printf("4 - para hexadecimal\n"); //imprime digite 4 para entrar números hexadecimais'
-            scanf("%s", &bsIni[0]); //escaneia a opção desejada para base de saida do tipo inteiro
+            scanf("%s", &bsIni[0]); //escaneia a opção desejada para base de saida do tipo string
 
         }     
 
