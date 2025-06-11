@@ -416,7 +416,7 @@ int main(){ //inicialização do método main de tipo inteiro
     pbs = &bs; //inicialização do ponteiro pbs apontando para bs
 
     printf("digite qual base de entrada deseja usar: \n"); //impressão das opções da base de entrada
-    printf("*lembrando que somente o primeiro item digitado é valido*"); //impressão dos detalhes da analise
+    printf("*lembrando que somente o primeiro item digitado é valido*\n"); //impressão dos detalhes da analise
     printf("1 - para binária\n"); //imprime digite 1 para entrar números binários
     printf("2 - para octal\n"); //imprime digite 2 para entrar números octais
     printf("3 - para decimal\n"); //imprime digite 3 para entrar números decimais
@@ -441,7 +441,7 @@ int main(){ //inicialização do método main de tipo inteiro
     }
 
     printf("digite qual deve ser a base de saída: \n"); //imprime as opções da base de saída
-    printf("*lembrando que somente o primeiro item digitado é valido*"); //impressão dos detalhes da analise
+    printf("*lembrando que somente o primeiro item digitado é valido*\n"); //impressão dos detalhes da analise
     printf("1 - para binária\n"); //imprime digite 1 para sair números binários
     printf("2 - para octal\n"); //imprime digite 2 para sair números octais
     printf("3 - para decimal\n"); //imprime digite 3 para sair números decimais++
